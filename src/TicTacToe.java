@@ -9,6 +9,13 @@ public class TicTacToe {
 	JFrame frame = new JFrame("Cupid's Tic-Tac-Toe");
 	JLabel textLabel = new JLabel();
 	JPanel textPanel = new JPanel();
+	JPanel boardPanel = new JPanel();
+
+	JButton [][] board = new JButton[3][3];
+	String playerX = "X";
+	String playerO = "O";
+	String currentPlayer = playerX;
+
 
 
 	TicTacToe() {
@@ -30,6 +37,9 @@ public class TicTacToe {
 		textPanel.add(textLabel);
 		frame.add(textPanel, BorderLayout.NORTH);
 
+		boardPanel.setLayout(new GridLayout(3,3));
+		boardPanel.setBackground(Color.darkGray);
+		frame.add(boardPanel);
 
 	}
 }
