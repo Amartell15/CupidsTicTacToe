@@ -54,11 +54,13 @@ public class TicTacToe {
 				tile.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						JButton tile = (JButton) e.getSource();
-						tile.setText(currentPlayer);
+						if (tile.getText() == "" ){
 
-						currentPlayer = currentPlayer == playerX ? playerO : playerX; //ternary operator is short-hand for if-else
-						textLabel.setText(currentPlayer + "'s turn.");
+							tile.setText(currentPlayer);
 
+							currentPlayer = currentPlayer == playerX ? playerO : playerX; //ternary operator is short-hand for if-else
+							textLabel.setText(currentPlayer + "'s turn.");
+						}
 					}
 				});
 			}
