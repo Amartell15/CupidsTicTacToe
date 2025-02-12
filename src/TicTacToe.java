@@ -17,7 +17,6 @@ public class TicTacToe {
 	String currentPlayer = playerX;
 
 
-
 	TicTacToe() {
 		frame.setVisible(true);
 		frame.setSize(boardWidth, boardHeight);
@@ -41,5 +40,12 @@ public class TicTacToe {
 		boardPanel.setBackground(Color.darkGray);
 		frame.add(boardPanel);
 
+		for(int r = 0; r < 3; r++){
+			for(int c = 0; c < 3; c++){
+				JButton tile = new JButton();
+				board[r][c] = tile;
+				boardPanel.add(tile);
+			}
+		}
 	}
 }
