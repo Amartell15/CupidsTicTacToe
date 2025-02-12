@@ -16,6 +16,8 @@ public class TicTacToe {
 	String playerO = "O";
 	String currentPlayer = playerX;
 
+	boolean gameOver = false;
+
 	TicTacToe() {
 		frame.setVisible(true);
 		frame.setSize(boardWidth, boardHeight);
@@ -53,16 +55,30 @@ public class TicTacToe {
 
 				tile.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						if(gameOver) return;
 						JButton tile = (JButton) e.getSource();
 						if (tile.getText() == "" ){
 
 							tile.setText(currentPlayer);
-
-							currentPlayer = currentPlayer == playerX ? playerO : playerX; //ternary operator is short-hand for if-else
+							checkWinner();
+							if(!gameOver){
+								currentPlayer = currentPlayer == playerX ? playerO : playerX; //ternary operator is short-hand for if-else
 							textLabel.setText(currentPlayer + "'s turn.");
+							}
 						}
 					}
 				});
+			}
+		}
+	}
+	void checkWinner(){
+		//horizontal
+		for (int r = 0; r < 3; r++){
+			if (board[r][0].getText() == "") continue;
+			else if (board[r][0].getText() == board[r][1].getText() && 
+			board[r][1].getText() == board[r][2].getText() ){
+			gameOver = true;
+			return;
 			}
 		}
 	}
